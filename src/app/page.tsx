@@ -1,6 +1,6 @@
 'use client';
 
-import Header from '@/components/common/header';
+import TopBar from '@/components/common/top-bar';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,7 +19,7 @@ export default function Home() {
   const { openLoginModal, openLanguageModal } = useModal();
   return (
     <div>
-      <Header />
+      <TopBar state="education" />
       <AlertDialog>
         <AlertDialogTrigger>Open</AlertDialogTrigger>
         <AlertDialogContent className="max-w-[360px] h-[430px]">
