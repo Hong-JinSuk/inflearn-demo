@@ -1,10 +1,10 @@
 'use client';
 
-import { headerSection } from '@/types/types';
+import { HeaderSection } from '@/types/types';
 import { Car, Leaf } from 'lucide-react';
 import { Separator } from '../ui/separator';
 
-const topHeaderSection: headerSection[][] = [
+const topHeaderSection: HeaderSection[][] = [
   [
     {
       label: 'education',
@@ -34,42 +34,39 @@ type headerProps = {
 
 export default function TopBar({ state = 'education' }: headerProps) {
   return (
-    <>
-      <div className="flex items-center justify-center w-full h-full z-30">
-        <div className="w-full h-full flex items-center justify-between max-w-[1440px] bg-slate-300">
-          {topHeaderSection.map((sides, sidesIndex) => (
-            <ul key={sidesIndex} className="flex items-center space-x-2">
-              {sides.map((item, itemIndex) => (
-                <>
-                  <li
-                    key={itemIndex}
-                    className="flex items-center space-x-2 cursor-pointer"
-                  >
-                    {item.icon && (
-                      <item.icon
-                        className={`${
-                          state === item.label ? 'text-green-500' : ''
-                        } size-5`}
-                      />
-                    )}
-                    <span
+    <div className="flex items-center justify-center w-full h-full z-30">
+      <div className="w-full h-full flex items-center justify-between max-w-[1440px] bg-slate-300">
+        {topHeaderSection.map((sides, sidesIndex) => (
+          <ul key={sidesIndex} className="flex items-center space-x-2">
+            {sides.map((item, itemIndex) => (
+              <>
+                <li
+                  key={itemIndex}
+                  className="flex items-center space-x-2 cursor-pointer"
+                >
+                  {item.icon && (
+                    <item.icon
                       className={`${
-                        state === item.label ? 'font-semibold' : ''
-                      } text-sm`}
-                    >
-                      {item.value}
-                    </span>
-                  </li>
-                  {itemIndex < topHeaderSection[sidesIndex].length - 1 && (
-                    <Separator orientation="vertical" className="h-3" />
+                        state === item.label ? 'text-green-500' : ''
+                      } size-5`}
+                    />
                   )}
-                </>
-              ))}
-            </ul>
-          ))}
-        </div>
+                  <span
+                    className={`${
+                      state === item.label ? 'font-semibold' : ''
+                    } text-sm`}
+                  >
+                    {item.value}
+                  </span>
+                </li>
+                {itemIndex < topHeaderSection[sidesIndex].length - 1 && (
+                  <Separator orientation="vertical" className="h-3" />
+                )}
+              </>
+            ))}
+          </ul>
+        ))}
       </div>
-      <header></header>
-    </>
+    </div>
   );
 }

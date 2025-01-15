@@ -16,6 +16,7 @@ export default function Layout({ children }: Props) {
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const { scrollDirection, lastScrollTop } = useScrollareaDirection({
     scrollAreaRef,
+    delay: 10,
   });
 
   const onStateClick = (label: string) => {
@@ -24,24 +25,24 @@ export default function Layout({ children }: Props) {
 
   return (
     <>
-      <ScrollArea
-        className="flex flex-col w-full h-full max-w-[1400px] min-w-[500px] px-8 mx-auto"
-        ref={scrollAreaRef}
-      >
-        <div className="flex flex-col">
+      <ScrollArea className="flex flex-col w-full h-full" ref={scrollAreaRef}>
+        <div className="flex flex-col max-w-[1400px] min-w-[500px] px-8 mx-auto">
           <div className="w-full h-10 bg-slate-400">
             <TopBar state={state} />
           </div>
           <div
-            className={`sticky top-10 left-0 w-full h-16 bg-rose-50 z-30 transition-transform duration-300 max-w-[1400px] min-w-[500px] px-8 mx-auto ${
-              scrollDirection === 'down'
-                ? '-translate-y-[104px]'
-                : lastScrollTop > 20
-                ? 'top-10 -translate-y-10'
-                : 'top-0 -translate-y-0'
-            }`}
+            className={`sticky top-0 left-0 w-full h-16 bg-rose-50 z-30 transition-transform duration-300
+              ${
+                state === 'education' && lastScrollTop > 40
+                  ? `${
+                      scrollDirection === 'down'
+                        ? '-translate-y-16'
+                        : 'translate-y-0'
+                    }`
+                  : ''
+              }`}
           >
-            <Header />
+            <Header onStateClick={onStateClick} />
           </div>
           <main className="flex-grow bg-blue-200 h-full">{children}</main>
         </div>

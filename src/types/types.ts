@@ -8,8 +8,22 @@ export type ModalProps = {
   closeModal: () => void;
 };
 
-export type headerSection = {
+export type HeaderSection = {
   label: string;
   value: string;
   icon: React.FC<React.SVGProps<SVGSVGElement>> | null;
+};
+
+export type HeaderMenuType = {
+  label: string;
+  value: string;
+  to: string;
+  children?: HeaderMenuChildren[];
+};
+
+export type HeaderMenuChildren = {
+  label: string;
+  value: string;
+  icon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  children?: HeaderMenuChildren[];
 };
