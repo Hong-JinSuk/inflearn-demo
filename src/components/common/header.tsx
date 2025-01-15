@@ -1,3 +1,4 @@
+import useModal from '@/hooks/use-modal';
 import { cn } from '@/lib/utils';
 import { HeaderMenuChildren, HeaderMenuType } from '@/types/types';
 import {
@@ -380,6 +381,7 @@ const headerMenus: HeaderMenuType[] = [
 
 export default function Header({ onStateClick }: HeaderProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const { openLoginModal, openLanguageModal } = useModal();
 
   return (
     <div className="w-full h-full flex items-center justify-between">
@@ -388,8 +390,10 @@ export default function Header({ onStateClick }: HeaderProps) {
       </section>
       <section className="flex items-center space-x-2 mr-2">
         <div className="flex items-center">
-          <Leaf className="text-green-500" />
-          <span className="text-2xl text-green-500">Inflearn</span>
+          <Link href={'/'} className="flex items-center">
+            <Leaf className="text-green-500" />
+            <span className="text-2xl text-green-500">Inflearn</span>
+          </Link>
         </div>
         {headerMenus.map((menu, index) => (
           <div
@@ -419,13 +423,19 @@ export default function Header({ onStateClick }: HeaderProps) {
           className="hidden lg:block"
           placeholder="나의 진짜 성장을 도와줄 실무 강의를 찾아보세요!"
         />
-        <div className="flex items-center p-1 rounded-sm cursor-pointer hover:bg-accent space-x-1 opacity-70">
+        <div
+          className="flex items-center p-1 rounded-sm cursor-pointer hover:bg-accent space-x-1 opacity-70"
+          onClick={openLanguageModal}
+        >
           <Earth className="size-5" />
           <span className="font-semibold whitespace-nowrap text-sm hidden lg:block">
             한국어
           </span>
         </div>
-        <Button className="bg-green-500 hover:bg-green-600">
+        <Button
+          className="bg-green-500 hover:bg-green-600"
+          onClick={openLoginModal}
+        >
           <span className="font-semibold">로그인</span>
         </Button>
       </section>

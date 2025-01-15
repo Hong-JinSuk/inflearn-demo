@@ -8,17 +8,13 @@ import {
 import { ModalProps } from '@/types/types';
 
 export default function LanguageModal({ isOpen, closeModal }: ModalProps) {
-  if (!isOpen) return null;
   return (
     <Dialog open={isOpen} onOpenChange={closeModal}>
       {/* h-213px */}
       <DialogContent className="max-w-[370px]">
         <DialogHeader>
-          <DialogTitle>Are you absolutely sure?</DialogTitle>
-          <DialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </DialogDescription>
+          <DialogTitle>Language Modal</DialogTitle>
+          <DialogDescription>It's don't work now...</DialogDescription>
         </DialogHeader>
       </DialogContent>
     </Dialog>

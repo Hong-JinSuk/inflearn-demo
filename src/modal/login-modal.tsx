@@ -1,31 +1,80 @@
 import {
   AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Separator } from '@/components/ui/separator';
 import { ModalProps } from '@/types/types';
+import { Apple, Github, Leaf, MapPin, MessageCircle, X } from 'lucide-react';
+import Link from 'next/link';
 
 export default function LoginModal({ isOpen, closeModal }: ModalProps) {
-  if (!isOpen) return null;
   return (
     <AlertDialog open={isOpen} onOpenChange={closeModal}>
-      <AlertDialogContent className="max-w-[360px] h-[430px]">
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers. login modal
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel onClick={closeModal}>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
-        </AlertDialogFooter>
+      <AlertDialogContent className="max-w-[360px] h-[430px] p-0 transition-all">
+        <AlertDialogTitle className="h-0">
+          <X
+            onClick={closeModal}
+            className="opacity-50 size-9 absolute top-2 right-1 p-2 rounded-lg cursor-pointer hover:bg-accent"
+          />
+        </AlertDialogTitle>
+        <div className="flex flex-col h-full items-center px-5 space-y-4">
+          <div className="flex justify-center items-center mb-2">
+            <Leaf className="text-green-500" />
+            <span className="text-2xl font-extralight text-green-500">
+              Inflearn
+            </span>
+          </div>
+          <div className="flex flex-col w-full space-y-3">
+            <Input className="w-full"></Input>
+            <Input className="w-full"></Input>
+            <Button className="bg-green-500 hover:bg-green-600 h-11">
+              <span className="font-bold">로그인</span>
+            </Button>
+          </div>
+          <div className="flex items-center justify-center space-x-2 my-3">
+            <Link href={'/find-password'}>
+              <span className="text-xs underline underline-offset-4">
+                비밀번호 찾기
+              </span>
+            </Link>
+            <Separator orientation="vertical" className="h-3" />
+            <Link href={'/signup'}>
+              <span className="text-xs underline underline-offset-4">
+                회원 가입
+              </span>
+            </Link>
+            <Separator orientation="vertical" className="h-3" />
+            <Link href={'/find-email'}>
+              <span className="text-xs underline underline-offset-4">
+                아이디(이메일) 찾기
+              </span>
+            </Link>
+          </div>
+          <div className="flex items-center justify-center space-x-5 pt-4">
+            <Separator />
+            <span className="whitespace-nowrap text-xs opacity-50">
+              간편 로그인
+            </span>
+            <Separator />
+          </div>
+          <div className="flex items-center justify-center space-x-3 pt-2">
+            <Button className="size-11">
+              <MessageCircle />
+            </Button>
+            <Button className="size-11">
+              <MapPin />
+            </Button>
+            <Button className="size-11">
+              <Github />
+            </Button>
+            <Button className="size-11">
+              <Apple />
+            </Button>
+          </div>
+        </div>
       </AlertDialogContent>
     </AlertDialog>
   );
