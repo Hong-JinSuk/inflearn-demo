@@ -42,7 +42,7 @@ export default function Layout({ children }: Props) {
               }`}
           >
             <Header onStateClick={onStateClick} />
-            {}
+            <div className="sticky top-0 h-20 bg-red-400"></div>
           </div>
           <main className="flex-grow bg-blue-200 h-full">{children}</main>
         </div>
