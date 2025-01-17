@@ -28,8 +28,8 @@ export default function LoginModal({ isOpen, closeModal }: ModalProps) {
             </span>
           </div>
           <div className="flex flex-col w-full space-y-3">
-            <Input className="w-full"></Input>
-            <Input className="w-full"></Input>
+            <Input type="email" className="w-full" placeholder="이메일"></Input>
+            <Input className="w-full" placeholder="비밀번호"></Input>
             <Button className="bg-green-500 hover:bg-green-600 h-11">
               <span className="font-bold">로그인</span>
             </Button>
@@ -61,11 +61,11 @@ export default function LoginModal({ isOpen, closeModal }: ModalProps) {
             <Separator />
           </div>
           <div className="flex items-center justify-center space-x-3 pt-2">
-            <Button className="size-11">
-              <MessageCircle />
+            <Button className="size-11 bg-yellow-200">
+              <MessageCircle className="text-black" />
             </Button>
-            <Button className="size-11">
-              <MapPin />
+            <Button className="size-11 bg-slate-100">
+              <MapPin className="text-blue-400" />
             </Button>
             <Button className="size-11">
               <Github />
