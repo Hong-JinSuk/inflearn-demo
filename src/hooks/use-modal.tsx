@@ -25,6 +25,13 @@ export default function useModal() {
     });
   };
 
+  const openSkillsModal = () => {
+    setModal({
+      isOpen: true,
+      type: 'skills',
+    });
+  };
+
   const closeModal = () => {
     setModal((prev) => ({
       ...prev,
@@ -36,6 +43,7 @@ export default function useModal() {
     openLoginModal,
     openThemeModal,
     openLanguageModal,
+    openSkillsModal,
     closeModal,
     modal,
   };

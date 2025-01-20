@@ -2,6 +2,7 @@
 
 import { HeaderSection } from '@/types/types';
 import { Car, Leaf } from 'lucide-react';
+import React from 'react';
 import { Separator } from '../ui/separator';
 
 const topHeaderSection: HeaderSection[][] = [
@@ -35,13 +36,13 @@ type headerProps = {
 export default function TopBar({ state = 'education' }: headerProps) {
   return (
     <div className="flex items-center justify-center w-full h-full z-30">
-      <div className="w-full h-full flex items-center justify-between max-w-[1440px] bg-slate-300">
+      <div className="w-full h-full flex items-center justify-between max-w-[1440px] min-w-[500px] mx-auto px-8 bg-white">
         {topHeaderSection.map((sides, sidesIndex) => (
           <ul key={sidesIndex} className="flex items-center space-x-2">
             {sides.map((item, itemIndex) => (
-              <>
+              <React.Fragment key={`fragment-${itemIndex}`}>
                 <li
-                  key={itemIndex}
+                  key={`item-${itemIndex}`}
                   className="flex items-center space-x-2 cursor-pointer"
                 >
                   {item.icon && (
@@ -59,10 +60,14 @@ export default function TopBar({ state = 'education' }: headerProps) {
                     {item.value}
                   </span>
                 </li>
-                {itemIndex < topHeaderSection[sidesIndex].length - 1 && (
-                  <Separator orientation="vertical" className="h-3" />
+                {itemIndex < sides.length - 1 && (
+                  <Separator
+                    orientation="vertical"
+                    className="h-3"
+                    key={`separator-${itemIndex}`}
+                  />
                 )}
-              </>
+              </React.Fragment>
             ))}
           </ul>
         ))}

@@ -1,6 +1,6 @@
 export type Modal = {
   isOpen: boolean;
-  type: 'login' | 'theme' | 'language' | null;
+  type: 'login' | 'theme' | 'language' | 'skills' | null;
 };
 
 export type ModalProps = {
@@ -30,4 +30,19 @@ export type HeaderMenuChildren = {
   children?: HeaderMenuChildren[];
 };
 
+export type SubHeaderMenusData = {
+  label: string;
+  value: string;
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+};
+
 export type TopBarStates = 'education' | 'carrer';
+
+export type HeaderStates = 'courses' | 'roadmap' | 'mentoring' | 'community';
+
+export type OrderStates =
+  | 'recommend'
+  | 'popularity'
+  | 'lastest'
+  | 'rating'
+  | 'like';

@@ -1,6 +1,10 @@
 import useModal from '@/hooks/use-modal';
 import { cn } from '@/lib/utils';
-import { HeaderMenuChildren, HeaderMenuType } from '@/types/types';
+import {
+  HeaderMenuChildren,
+  HeaderMenuType,
+  HeaderStates,
+} from '@/types/types';
 import {
   BookOpenText,
   CodeSquare,
@@ -18,7 +22,7 @@ import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 
 type HeaderProps = {
-  onStateClick: (label: string) => void;
+  onStateClick: (label: HeaderStates) => void;
 };
 
 type HeaderMenusProps = {
@@ -384,7 +388,7 @@ export default function Header({ onStateClick }: HeaderProps) {
   const { openLoginModal, openLanguageModal } = useModal();
 
   return (
-    <div className="w-full h-full flex items-center justify-between">
+    <div className="w-full h-full flex items-center justify-between max-w-[1440px] min-w-[500px] mx-auto px-8">
       <section className="lg:hidden">
         <MenuSquare />
       </section>
@@ -403,15 +407,18 @@ export default function Header({ onStateClick }: HeaderProps) {
             onMouseLeave={() => setActiveIndex(null)}
           >
             <Link href={menu.to} className="hidden lg:block">
-              <span className="font-semibold hover:text-green-500">
+              <div
+                className="font-semibold hover:text-green-500"
+                onClick={() => onStateClick(menu.label as HeaderStates)}
+              >
                 {menu.value}
-              </span>
+              </div>
             </Link>
             <div className="flex">
               {activeIndex === index && menu.children && (
                 <HeaderMenu
                   menus={menu.children}
-                  className="absolute top-full bg-white rounded-md shadow-md"
+                  className="absolute top-full bg-white rounded-md shadow-md z-50"
                 />
               )}
             </div>
