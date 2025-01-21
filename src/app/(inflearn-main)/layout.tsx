@@ -19,7 +19,7 @@ export default function Layout({ children }: Props) {
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const { scrollDirection, lastScrollTop } = useScrollareaDirection({
     scrollAreaRef,
-    delay: 10,
+    delay: 30,
   });
 
   const onHeaderStateClick = (label: HeaderStates) => {
@@ -53,12 +53,14 @@ export default function Layout({ children }: Props) {
               }`}
           >
             <Header onStateClick={onHeaderStateClick} />
-            {headerState === 'courses' && <CorSubHeader />}
+            <div className="border-b">
+              {headerState === 'courses' && <CorSubHeader />}
+            </div>
           </div>
           <main
             className={`${
               headerState === 'courses' ? 'mt-20' : ''
-            } flex-grow h-full w-full max-w-[1440px] min-w-[500px] px-8 mx-auto border-t`}
+            } flex-grow h-full w-full max-w-[1440px] min-w-[500px] px-8 mx-auto`}
           >
             {children}
           </main>

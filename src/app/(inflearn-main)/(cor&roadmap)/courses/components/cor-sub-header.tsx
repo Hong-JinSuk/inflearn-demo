@@ -68,7 +68,7 @@ export default function CorSubHeader() {
   // };
 
   return (
-    <div className="flex items-center h-20 w-full max-w-[1440px] min-w-[500px] mx-auto px-4 relative">
+    <div className="flex items-center h-20 w-full max-w-[1440px] min-w-[500px] mx-auto px-4 relative bg-white">
       {/* <div className="absolute left-4 top-0 h-full w-20 pointer-events-none bg-gradient-to-r from-red-400 to-transparent z-10" /> */}
       <div
         className="flex items-center w-[97vw] px-4 overflow-x-auto scroll-container"
