@@ -82,87 +82,88 @@ export default function Page() {
 
   return (
     <>
-      <section className="flex flex-col pt-4 space-y-4">
-        <div className="flex items-center justify-start space-x-2">
-          <Button onClick={openSkillsModal} variant="outline">
-            <ListFilter />
-            <span>기술 검색</span>
-          </Button>
-          <Select>
-            <SelectTrigger className="max-w-32">
-              <div className="block max-w-[84px] truncate">
-                {selectedLevels.length > 0
-                  ? selectedLevels.join(', ') // 선택된 항목 표시
-                  : '난이도'}
-              </div>
-            </SelectTrigger>
-            <SelectContent>
-              {levelOptions.map((option) => (
-                <div
-                  key={option.value}
-                  onClick={() => handleLevelChange(option.value)}
-                  className="flex items-center justify-start p-2 space-x-2 cursor-pointer hover:bg-gray-100 rounded-md"
-                >
-                  {/* {selectedLevels.includes(option.value) && (
+      <section className="flex flex-col">
+        <div className="flex flex-col lg:flex-row lg: space-x-4 justify-between py-6">
+          <div className="flex items-center justify-start space-x-2">
+            <Button onClick={openSkillsModal} variant="outline">
+              <ListFilter />
+              <span>기술 검색</span>
+            </Button>
+            <Select>
+              <SelectTrigger className="max-w-32">
+                <div className="block max-w-[84px] truncate">
+                  {selectedLevels.length > 0
+                    ? selectedLevels.join(', ') // 선택된 항목 표시
+                    : '난이도'}
+                </div>
+              </SelectTrigger>
+              <SelectContent>
+                {levelOptions.map((option) => (
+                  <div
+                    key={option.value}
+                    onClick={() => handleLevelChange(option.value)}
+                    className="flex items-center justify-start p-2 space-x-2 cursor-pointer hover:bg-gray-100 rounded-md"
+                  >
+                    {/* {selectedLevels.includes(option.value) && (
                   <Check className="h-4 w-4 " />
                 )} */}
-                  <input
-                    type="checkbox"
-                    checked={selectedLevels.includes(option.value)}
-                    onChange={() => handleLevelChange(option.label)}
-                    className="h-4 w-4 cursor-pointer"
-                  />
-                  <span>{option.value}</span>
+                    <input
+                      type="checkbox"
+                      checked={selectedLevels.includes(option.value)}
+                      onChange={() => handleLevelChange(option.label)}
+                      className="h-4 w-4 cursor-pointer"
+                    />
+                    <span>{option.value}</span>
+                  </div>
+                ))}
+              </SelectContent>
+            </Select>
+            <Select>
+              <SelectTrigger className="max-w-32">
+                <div className="block max-w-[84px] truncate">
+                  {selectedPrices.length > 0
+                    ? selectedPrices.join(', ') // 선택된 항목 표시
+                    : '가격'}
                 </div>
-              ))}
-            </SelectContent>
-          </Select>
-          <Select>
-            <SelectTrigger className="max-w-32">
-              <div className="block max-w-[84px] truncate">
-                {selectedPrices.length > 0
-                  ? selectedPrices.join(', ') // 선택된 항목 표시
-                  : '가격'}
-              </div>
-            </SelectTrigger>
-            <SelectContent>
-              {priceOptions.map((option) => (
-                <div
-                  key={option.value}
-                  onClick={() => handlePriceChange(option.value)}
-                  className="flex items-center justify-start p-2 space-x-2 cursor-pointer hover:bg-gray-100 rounded-md"
-                >
-                  <input
-                    type="checkbox"
-                    checked={selectedPrices.includes(option.value)}
-                    onChange={() => handlePriceChange(option.label)}
-                    className="h-4 w-4 cursor-pointer"
-                  />
-                  <span>{option.value}</span>
-                </div>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <span className="text-sm">모임/부트캠프</span>
-            <Switch onClick={handleClickSwitch} checked={includeBoot} />
+              </SelectTrigger>
+              <SelectContent>
+                {priceOptions.map((option) => (
+                  <div
+                    key={option.value}
+                    onClick={() => handlePriceChange(option.value)}
+                    className="flex items-center justify-start p-2 space-x-2 cursor-pointer hover:bg-gray-100 rounded-md"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedPrices.includes(option.value)}
+                      onChange={() => handlePriceChange(option.label)}
+                      className="h-4 w-4 cursor-pointer"
+                    />
+                    <span>{option.value}</span>
+                  </div>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
-          <Select onValueChange={handleOrderChange}>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="추천순" />
-            </SelectTrigger>
-            <SelectContent>
-              {orderOptions.map((item, index) => (
-                <SelectItem value={item.label} key={index}>
-                  {item.value}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <div className="flex flex-grow items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <span className="text-sm">모임/부트캠프</span>
+              <Switch onClick={handleClickSwitch} checked={includeBoot} />
+            </div>
+            <Select onValueChange={handleOrderChange}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="추천순" />
+              </SelectTrigger>
+              <SelectContent>
+                {orderOptions.map((item, index) => (
+                  <SelectItem value={item.label} key={index}>
+                    {item.value}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
         </div>
-
         <div className="flex flex-wrap gap-2 pb-4">
           {selectedPrices.map((item, index) => (
             <Button
