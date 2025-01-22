@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "yarn run open-browser && npx next dev --turbopack",
+    "start": "next start",
+    "test": "yarn run open-browser && npx next dev --turbopack",
     "lint": "next lint",
     "open-browser": "node scripts/open-browser.js"
   },
