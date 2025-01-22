@@ -548,8 +548,22 @@ export default function Page() {
                         ))}
                       </div>
                     </div>
-                    <ShoppingCart className="flex-grow size-5 text-green-600" />
-                    <Heart className="size-5 text-green-600" />
+                    <div className="flex-grow flex justify-end items-center space-x-2">
+                      <ShoppingCart
+                        className="size-10 rounded-lg text-green-600 hover:bg-green-100 p-[10px]"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          // cart api
+                        }}
+                      />
+                      <Heart
+                        className="size-10 rounded-lg text-green-600 hover:bg-green-100 p-[10px]"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          // like api
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
               </CardContent>
