@@ -191,7 +191,12 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <ul className="flex absolute bottom-0 w-full h-[66px] bg-white items-center justify-center space-x-36">
+      <ul
+        className="flex absolute bottom-0 w-full h-[66px] bg-white items-center justify-center space-x-36"
+        style={{
+          boxShadow: '0 -2px 10px rgba(0, 0, 0, 0.1)',
+        }}
+      >
         {footdata.map((item, index) => (
           <li className="flex space-y-1 cursor-pointer" key={index}>
             <a
