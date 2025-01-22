@@ -1,6 +1,6 @@
 'use client';
 
-import { HeaderSection } from '@/types/types';
+import { headerProps, HeaderSection } from '@/types/types';
 import { Car, Leaf } from 'lucide-react';
 import React from 'react';
 import { Separator } from '../ui/separator';
@@ -28,10 +28,6 @@ const topHeaderSection: HeaderSection[][] = [
     { label: 'join-us', value: '지식공유 참여', icon: null },
   ],
 ];
-
-type headerProps = {
-  state: string;
-};
 
 export default function TopBar({ state = 'education' }: headerProps) {
   return (

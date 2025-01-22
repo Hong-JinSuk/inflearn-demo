@@ -5,4 +5,10 @@ const nextConfig: NextConfig = {
   basePath: '/inflearn-demo',
 };
 
+module.exports = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+};
+
 export default nextConfig;

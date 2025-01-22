@@ -40,6 +40,10 @@ export type TopBarStates = 'education' | 'carrer';
 
 export type HeaderStates = 'courses' | 'roadmap' | 'mentoring' | 'community';
 
+export type headerProps = {
+  state: string;
+};
+
 export type OrderStates =
   | 'recommend'
   | 'popularity'
