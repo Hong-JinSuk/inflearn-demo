@@ -8,6 +8,8 @@ const useScrollDirection = (delay = 100) => {
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return; // 서버에서 실행 방지
+
     const handleScroll = debounce(() => {
       const currentScrollY = window.scrollY;
 
