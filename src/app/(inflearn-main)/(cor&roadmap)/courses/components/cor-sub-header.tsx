@@ -37,6 +37,21 @@ const subHeaderMenus: SubHeaderMenusData[] = [
 export default function CorSubHeader() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [chevronDir, setChevronDir] = useState<'left' | 'right'>('right');
+  const [isWide, setIsWide] = useState(false);
+
+  // 윈도우 크기 감지
+  useEffect(() => {
+    const updateWidth = () => {
+      setIsWide(window.innerWidth > 1290); // 너비가 1000px 이상인지 확인
+    };
+
+    updateWidth(); // 초기값 설정
+    window.addEventListener('resize', updateWidth); // 리사이즈 이벤트 추가
+
+    return () => {
+      window.removeEventListener('resize', updateWidth); // 이벤트 클린업
+    };
+  }, []);
 
   useEffect(() => {
     const handleScrollEvent = () => {
@@ -72,29 +87,34 @@ export default function CorSubHeader() {
 
   return (
     <div className="flex items-center h-20 w-full max-w-[1440px] min-w-[500px] mx-auto px-4 relative bg-white">
-      <ChevronLeft
-        onClick={() => {
-          handleScroll('left');
-        }}
-        className={`${
-          chevronDir === 'right' ? 'hidden' : ''
-        } absolute left-8 z-10 cursor-pointer bg-white border size-8 rounded-full p-1`}
-        strokeWidth={1}
-      />
+      {!isWide && (
+        <ChevronLeft
+          onClick={() => {
+            handleScroll('left');
+          }}
+          className={`${
+            chevronDir === 'right' ? 'hidden' : ''
+          } absolute left-8 z-10 cursor-pointer bg-white border size-8 rounded-full p-1`}
+          strokeWidth={1}
+        />
+      )}
+
       <div
         className="flex items-center w-[97vw] px-4 overflow-x-auto scroll-container"
         // onMouseEnter={() => setIsHover(true)} // 마우스 오버 시 활성화
         // onMouseLeave={() => setIsHover(false)} // 마우스 나가면 비활성화
         ref={scrollRef}
         style={{
-          maskImage:
-            chevronDir === 'left'
+          maskImage: !isWide
+            ? chevronDir === 'left'
               ? 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 100%, rgba(0, 0, 0, 0))'
-              : 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0))',
-          WebkitMaskImage:
-            chevronDir === 'left'
+              : 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0))'
+            : undefined,
+          WebkitMaskImage: !isWide
+            ? chevronDir === 'left'
               ? 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 100%, rgba(0, 0, 0, 0))'
-              : 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0))',
+              : 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0))'
+            : undefined,
           maskRepeat: 'no-repeat',
           WebkitMaskRepeat: 'no-repeat',
         }}
@@ -118,15 +138,17 @@ export default function CorSubHeader() {
           ))}
         </div>
       </div>
-      <ChevronRight
-        onClick={() => {
-          handleScroll('right');
-        }}
-        className={`${
-          chevronDir === 'left' ? 'hidden' : ''
-        } absolute right-8 z-10 cursor-pointer bg-white border size-8 rounded-full p-1`}
-        strokeWidth={1}
-      />
+      {!isWide && (
+        <ChevronRight
+          onClick={() => {
+            handleScroll('right');
+          }}
+          className={`${
+            chevronDir === 'left' ? 'hidden' : ''
+          } absolute right-8 z-10 cursor-pointer bg-white border size-8 rounded-full p-1`}
+          strokeWidth={1}
+        />
+      )}
     </div>
   );
 }
