@@ -82,3 +82,14 @@ export type CardData = {
   salePercent?: number;
   salePrice?: number;
 };
+
+export type FooterChildren = {
+  value: string;
+  to: string;
+};
+
+export type FooterData = {
+  value: string;
+  to?: string;
+  children: FooterChildren[];
+};

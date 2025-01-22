@@ -31,17 +31,13 @@ export default function Layout({ children }: Props) {
   }, [headerState]);
 
   return (
-    <>
-      <ScrollArea
-        className="flex flex-col w-full h-full overflow-auto"
-        ref={scrollAreaRef}
-      >
-        <div className="flex flex-col">
-          <div className="w-full h-10 border-b">
-            <TopBar state={topBarState} />
-          </div>
-          <div
-            className={`sticky top-0 left-0 w-full h-16 z-30 transition-transform duration-300 bg-white
+    <ScrollArea className="flex flex-col w-full h-full" ref={scrollAreaRef}>
+      <div className="flex flex-col">
+        <div className="w-full h-10 border-b">
+          <TopBar state={topBarState} />
+        </div>
+        <div
+          className={`sticky top-0 left-0 w-full h-16 z-30 transition-transform duration-300 bg-white
               ${
                 headerState === 'courses' && lastScrollTop > 40
                   ? `${
@@ -51,22 +47,21 @@ export default function Layout({ children }: Props) {
                     }`
                   : ''
               }`}
-          >
-            <Header onStateClick={onHeaderStateClick} />
-            <div className="border-b">
-              {headerState === 'courses' && <CorSubHeader />}
-            </div>
+        >
+          <Header onStateClick={onHeaderStateClick} />
+          <div className="border-b">
+            {headerState === 'courses' && <CorSubHeader />}
           </div>
-          <main
-            className={`${
-              headerState === 'courses' ? 'mt-20' : ''
-            } flex-grow h-full w-full max-w-[1440px] min-w-[500px] px-8 mx-auto`}
-          >
-            {children}
-          </main>
         </div>
-        <Footer />
-      </ScrollArea>
-    </>
+        <main
+          className={`${
+            headerState === 'courses' ? 'mt-20' : ''
+          } flex-grow h-full w-full max-w-[1440px] min-w-[500px] px-8 mx-auto`}
+        >
+          {children}
+        </main>
+      </div>
+      <Footer />
+    </ScrollArea>
   );
 }

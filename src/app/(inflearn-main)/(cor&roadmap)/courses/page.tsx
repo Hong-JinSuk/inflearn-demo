@@ -3,6 +3,7 @@
 import img from '@/asset/img-1.png';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import CustomPagination from '@/components/ui/custom-pagination';
 import {
   Select,
   SelectContent,
@@ -319,7 +320,7 @@ export default function Page() {
 
   return (
     <>
-      <section className="flex flex-col pb-4 pt-6 space-y-4">
+      <section className="flex flex-col pt-6 space-y-4">
         <div className="flex flex-col lg:flex-row lg:space-x-4 justify-between">
           <div className="flex items-center justify-start space-x-2">
             <Button onClick={openSkillsModal} variant="outline">
@@ -382,9 +383,9 @@ export default function Page() {
               </SelectContent>
             </Select>
           </div>
-          <div className="flex flex-grow items-center justify-between">
+          <div className="flex flex-grow items-center justify-between pt-1 lg:pt-0">
             <div className="flex items-center space-x-4">
-              <span className="text-sm">모임/부트캠프</span>
+              <span className="text-sm font-semibold">모임/부트캠프</span>
               <Switch onClick={handleClickSwitch} checked={includeBoot} />
             </div>
             <Select onValueChange={handleOrderChange}>
@@ -437,7 +438,7 @@ export default function Page() {
           ))}
         </div>
       </section>
-      <section className="flex flex-wrap gap-6 spacey">
+      <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 flex-wrap gap-6 spacey py-4">
         {cardDatas.map((item, index) => (
           <Card
             className="flex-grow basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 h-[370px] group border-none shadow-none"
@@ -528,6 +529,9 @@ export default function Page() {
           </Card>
         ))}
       </section>
+      <div className="p-3">
+        <CustomPagination totalPage={202} pagingSize={10} />
+      </div>
     </>
   );
 }
