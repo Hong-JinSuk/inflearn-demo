@@ -2,14 +2,7 @@
 
 import img from '@/asset/img-1.png';
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Select,
   SelectContent,
@@ -86,7 +79,7 @@ const cardDatas: CardData[] = [
     title: 'test title',
     author: 'test author',
     to: '/test',
-    price: 3300000000,
+    price: 33000000,
     description:
       'test test test testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest testtest test',
     level: '초급',
@@ -96,8 +89,161 @@ const cardDatas: CardData[] = [
     students: 19000,
     saleDate: 6,
     salePercent: 50,
-    salePrice: 1650000000,
+    salePrice: 16500000,
     upload: new Date('2025-01-10T12:30:00Z'),
+  },
+  {
+    image: null,
+    title: 'test title 1',
+    author: 'test author',
+    to: '/test-1',
+    price: 72000,
+    description: 'test description 1',
+    level: '중급이상',
+    classes: ['Python', '코딩테스트', '알고리즘', 'AI', 'Anaconda'],
+    reviewCount: 19221,
+    reviewScore: 4.9,
+    students: 30856,
+    saleDate: 59,
+    salePercent: 50,
+    salePrice: 36000,
+    upload: new Date('2025-01-09T00:00:00Z'),
+  },
+  {
+    image: null,
+    title: 'test title 2',
+    author: 'test author',
+    to: '/test-2',
+    price: 43000,
+    description: 'test description 2',
+    level: '중급이상',
+    classes: ['Python', '코딩테스트', '알고리즘', 'AI', 'Anaconda'],
+    reviewCount: 18419,
+    reviewScore: 5.0,
+    students: 42412,
+    saleDate: 14,
+    salePercent: 60,
+    salePrice: 17000,
+    upload: new Date('2024-12-15T00:00:00Z'),
+  },
+  {
+    image: null,
+    title: 'test title 3',
+    author: 'test author',
+    to: '/test-3',
+    price: 47000,
+    description: 'test description 3',
+    level: '중급이상',
+    classes: ['Python', '코딩테스트', '알고리즘', 'AI', 'Anaconda'],
+    reviewCount: 17256,
+    reviewScore: 4.5,
+    students: 25367,
+    saleDate: 9,
+    salePercent: 70,
+    salePrice: 14000,
+    upload: new Date('2025-01-15T00:00:00Z'),
+  },
+  {
+    image: null,
+    title: 'test title 4',
+    author: 'test author',
+    to: '/test-4',
+    price: 70000,
+    description: 'test description 4',
+    level: '입문',
+    classes: ['Python', '코딩테스트', '알고리즘', 'AI', 'Anaconda'],
+    reviewCount: 1648,
+    reviewScore: 4.8,
+    students: 10433,
+    saleDate: 50,
+    salePercent: 60,
+    salePrice: 28000,
+    upload: new Date('2025-01-05T00:00:00Z'),
+  },
+  {
+    image: null,
+    title: 'test title 5',
+    author: 'test author',
+    to: '/test-5',
+    price: 97000,
+    description: 'test description 5',
+    level: '초급',
+    classes: ['Python', '코딩테스트', '알고리즘', 'AI', 'Anaconda'],
+    reviewCount: 17657,
+    reviewScore: 5.0,
+    students: 4500,
+    saleDate: 100,
+    salePercent: 40,
+    salePrice: 58000,
+    upload: new Date('2024-12-13T00:00:00Z'),
+  },
+  {
+    image: null,
+    title: 'test title 6',
+    author: 'test author',
+    to: '/test-6',
+    price: 90000,
+    description: 'test description 6',
+    level: '중급이상',
+    classes: ['Python', '코딩테스트', '알고리즘', 'AI', 'Anaconda'],
+    reviewCount: 1918,
+    reviewScore: 4.2,
+    students: 6700,
+    saleDate: 133,
+    salePercent: 70,
+    salePrice: 27000,
+    upload: new Date('2024-12-15T00:00:00Z'),
+  },
+  {
+    image: null,
+    title: 'test title 7',
+    author: 'test author',
+    to: '/test-7',
+    price: 120000,
+    description: 'test description 7',
+    level: '중급이상',
+    classes: ['Python', '코딩테스트', '알고리즘', 'AI', 'Anaconda'],
+    reviewCount: 118,
+    reviewScore: 4.5,
+    students: 900,
+    saleDate: 14,
+    salePercent: 20,
+    salePrice: 96000,
+    upload: new Date('2025-01-21T00:00:00Z'),
+  },
+  {
+    image: null,
+    title: 'test title 8',
+    author: 'test author',
+    to: '/test-6',
+    price: 60000,
+    description: 'test description 6',
+    level: '중급이상',
+    classes: ['Python', '코딩테스트', '알고리즘', 'AI', 'Anaconda'],
+    reviewCount: 9918,
+    reviewScore: 4.1,
+    students: 1300,
+    saleDate: 26,
+    salePercent: 30,
+    salePrice: 42000,
+    upload: new Date('2024-12-15T00:00:00Z'),
+  },
+  {
+    image: null,
+    title: 'test title 9',
+    author: 'test author',
+    to: '/test-6',
+    price: 90000,
+    description: 'test description 6',
+    level: '중급이상',
+    classes: ['Python', '코딩테스트', '알고리즘', 'AI', 'Anaconda'],
+    reviewCount: 1918,
+    reviewScore: 4.8,
+    students: 21000,
+    saleDate: 50,
+    salePercent: 50,
+    salePrice: 45000,
+    upload: new Date('2024-12-15T00:00:00Z'),
   },
 ];
 
@@ -150,7 +296,9 @@ export default function Page() {
   };
 
   const formatDate = (hour: number) => {
-    return hour > 12 ? (
+    return hour / 12 > 1 && hour / 12 < 2 ? (
+      <span>내일까지</span>
+    ) : hour > 12 ? (
       <span>{Math.floor(hour / 12)}일만</span>
     ) : (
       <span>{hour}시간만</span>
@@ -379,204 +527,6 @@ export default function Page() {
             </Link>
           </Card>
         ))}
-        <Card className="flex-grow basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 max-h-[371px] group shadow-none border-none">
-          <Link href={'/courses'}>
-            <CardHeader className="w-full p-0">
-              <CardTitle>
-                <Image
-                  src={img}
-                  alt=""
-                  className="aspect-video rounded-lg transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg"
-                />
-              </CardTitle>
-              <span className="text-sm font-semibold min-h-11">
-                인공지능 활용 추천 시스템222
-              </span>
-            </CardHeader>
-            <CardContent className="flex flex-col items-start justify-start overflow-hidden max-h-36 p-0">
-              <p>Card Content</p>
-              <p>Card Content</p>
-              <p>Card Content</p>
-            </CardContent>
-          </Link>
-        </Card>
-        <Card className="flex-grow basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-          </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
-          </CardFooter>
-        </Card>
-        <Card className="flex-grow basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
-            <p>Card Content</p>
-          </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
-          </CardFooter>
-        </Card>
-        <Card className="flex-grow basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
-            <p>Card Content</p>
-          </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
-          </CardFooter>
-        </Card>
-        <Card className="flex-grow basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-          </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
-          </CardFooter>
-        </Card>
-        <Card className="flex-grow basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-          </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
-          </CardFooter>
-        </Card>
-        <Card className="flex-grow basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-          </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
-          </CardFooter>
-        </Card>
-        <Card className="flex-grow basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-          </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
-          </CardFooter>
-        </Card>
-        <Card className="flex-grow basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-          </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
-          </CardFooter>
-        </Card>
-        <Card className="flex-grow basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-          </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
-          </CardFooter>
-        </Card>
-        <Card className="flex-grow basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-          </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
-          </CardFooter>
-        </Card>
-        <Card className="flex-grow basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-            <p>Card Content</p>
-          </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
-          </CardFooter>
-        </Card>
       </section>
     </>
   );
