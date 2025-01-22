@@ -46,3 +46,39 @@ export type OrderStates =
   | 'lastest'
   | 'rating'
   | 'like';
+
+export type classesType =
+  | 'Python'
+  | '알고리즘'
+  | '코딩테스트'
+  | '머신러닝'
+  | 'AI'
+  | 'Pandas'
+  | 'Anaconda'
+  | 'Java'
+  | 'C++'
+  | 'C#'
+  | '투자'
+  | '빅데이터'
+  | '확률과 통계'
+  | 'SQL'
+  | 'MySQL'
+  | '정보처리기사';
+
+export type CardData = {
+  image: string | null;
+  title: string;
+  author: string;
+  to: string;
+  price: number;
+  description: string;
+  level: '입문' | '초급' | '중급이상';
+  classes: classesType[];
+  upload: Date;
+  reviewCount?: number;
+  reviewScore?: number;
+  students?: number;
+  saleDate?: number;
+  salePercent?: number;
+  salePrice?: number;
+};

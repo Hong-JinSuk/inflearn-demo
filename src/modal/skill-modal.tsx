@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { selectedSkillsAtom } from '@/store/atom';
@@ -206,14 +206,16 @@ export default function SkillModal({ isOpen, closeModal }: ModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="flex flex-col max-w-[620px] h-[500px] overflow-hidden">
-        <div className="w-full space-y-2">
-          <span className="font-bold text-lg">기술</span>
-          <Input
-            placeholder="기술 검색"
-            onChange={(e) => onValueChange(e.target.value)}
-            className="w-full h-11"
-          />
-        </div>
+        <DialogTitle>
+          <div className="w-full space-y-2">
+            <span className="font-bold text-lg">기술</span>
+            <Input
+              placeholder="기술 검색"
+              onChange={(e) => onValueChange(e.target.value)}
+              className="w-full h-11"
+            />
+          </div>
+        </DialogTitle>
         <ScrollArea className="w-full flex-grow">
           <div className="flex mb-2 gap-2 flex-wrap">
             {tempSelectedSkills?.map((label, index) => (
