@@ -1,3 +1,4 @@
+import useWindowResize from '@/hooks/use-window-resize';
 import { FooterData } from '@/types/types';
 import {
   Ellipsis,
@@ -89,6 +90,8 @@ const footdata = [
 ];
 
 export default function Footer() {
+  const { width } = useWindowResize();
+
   return (
     <>
       <div className="w-full h-[480px] bg-[#303740]">
@@ -191,24 +194,26 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <ul
-        className="flex absolute bottom-0 w-full h-[66px] bg-white items-center justify-center space-x-36"
-        style={{
-          boxShadow: '0 -2px 10px rgba(0, 0, 0, 0.1)',
-        }}
-      >
-        {footdata.map((item, index) => (
-          <li className="flex space-y-1 cursor-pointer" key={index}>
-            <a
-              href=""
-              className="flex flex-col items-center justify-center space-y-1"
-            >
-              <item.icon className="size-7" strokeWidth={1} />
-              <span className="text-center text-xs">{item.value}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
+      {width < 1024 && (
+        <ul
+          className="flex absolute bottom-0 w-full h-[66px] bg-white items-center justify-center space-x-36"
+          style={{
+            boxShadow: '0 -2px 10px rgba(0, 0, 0, 0.1)',
+          }}
+        >
+          {footdata.map((item, index) => (
+            <li className="flex space-y-1 cursor-pointer" key={index}>
+              <a
+                href=""
+                className="flex flex-col items-center justify-center space-y-1"
+              >
+                <item.icon className="size-7" strokeWidth={1} />
+                <span className="text-center text-xs">{item.value}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }

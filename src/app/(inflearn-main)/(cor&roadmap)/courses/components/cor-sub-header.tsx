@@ -1,5 +1,6 @@
 'use client';
 import { Separator } from '@/components/ui/separator';
+import useWindowResize from '@/hooks/use-window-resize';
 import { SubHeaderMenusData } from '@/types/types';
 import {
   Atom,
@@ -37,21 +38,7 @@ const subHeaderMenus: SubHeaderMenusData[] = [
 export default function CorSubHeader() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [chevronDir, setChevronDir] = useState<'left' | 'right'>('right');
-  const [isWide, setIsWide] = useState(false);
-
-  // 윈도우 크기 감지
-  useEffect(() => {
-    const updateWidth = () => {
-      setIsWide(window.innerWidth > 1290); // 너비가 1000px 이상인지 확인
-    };
-
-    updateWidth(); // 초기값 설정
-    window.addEventListener('resize', updateWidth); // 리사이즈 이벤트 추가
-
-    return () => {
-      window.removeEventListener('resize', updateWidth); // 이벤트 클린업
-    };
-  }, []);
+  const { width } = useWindowResize();
 
   useEffect(() => {
     const handleScrollEvent = () => {
@@ -87,7 +74,7 @@ export default function CorSubHeader() {
 
   return (
     <div className="flex items-center h-20 w-full max-w-[1440px] min-w-[500px] mx-auto px-4 relative bg-white">
-      {!isWide && (
+      {width < 1290 && (
         <ChevronLeft
           onClick={() => {
             handleScroll('left');
@@ -105,16 +92,18 @@ export default function CorSubHeader() {
         // onMouseLeave={() => setIsHover(false)} // 마우스 나가면 비활성화
         ref={scrollRef}
         style={{
-          maskImage: !isWide
-            ? chevronDir === 'left'
-              ? 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 100%, rgba(0, 0, 0, 0))'
-              : 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0))'
-            : undefined,
-          WebkitMaskImage: !isWide
-            ? chevronDir === 'left'
-              ? 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 100%, rgba(0, 0, 0, 0))'
-              : 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0))'
-            : undefined,
+          maskImage:
+            width < 1290
+              ? chevronDir === 'left'
+                ? 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 100%, rgba(0, 0, 0, 0))'
+                : 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0))'
+              : undefined,
+          WebkitMaskImage:
+            width < 1290
+              ? chevronDir === 'left'
+                ? 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 100%, rgba(0, 0, 0, 0))'
+                : 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0))'
+              : undefined,
           maskRepeat: 'no-repeat',
           WebkitMaskRepeat: 'no-repeat',
         }}
@@ -138,7 +127,7 @@ export default function CorSubHeader() {
           ))}
         </div>
       </div>
-      {!isWide && (
+      {width < 1290 && (
         <ChevronRight
           onClick={() => {
             handleScroll('right');
