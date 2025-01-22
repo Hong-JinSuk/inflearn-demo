@@ -9,16 +9,7 @@ body {
 
 /* CSS 추가 */
 .scroll-container::-webkit-scrollbar {
-  height: 2px; /* 스크롤바 높이 (가로 스크롤) */
-}
-
-.scroll-container::-webkit-scrollbar-thumb {
-  background: #ccc; /* 스크롤바 색상 */
-  border-radius: 10px; /* 둥글게 */
-}
-
-.scroll-container::-webkit-scrollbar-track {
-  background: transparent; /* 트랙 배경 투명 */
+  height: 0px; /* 스크롤바 높이 (가로 스크롤) */
 }
 
 @layer base {
