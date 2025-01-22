@@ -19,7 +19,7 @@ import { useAtom } from 'jotai';
 import { Heart, ListFilter, ShoppingCart, Star, User, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const levelOptions = [
   { label: 'introduction', value: '입문' },
@@ -268,10 +268,6 @@ export default function Page() {
   const [orderType, setOrderType] = useState<OrderStates>('recommend');
   const [includeBoot, setIncludeBoot] = useState(false);
 
-  useEffect(() => {
-    console.log(selectedLevels);
-  }, [selectedLevels]);
-
   const handleLevelChange = (value: string) => {
     setSelectedLevels((prev) =>
       prev.includes(value)
@@ -330,18 +326,6 @@ export default function Page() {
     return timeDifference <= twoWeeksInMilliseconds;
   };
 
-  const isUpdate = (dateString: Date): boolean => {
-    const inputDate = new Date(dateString);
-    const currentDate = new Date();
-
-    const twoWeeksInMilliseconds = 14 * 24 * 60 * 60 * 1000;
-    const timeDifference = Math.abs(
-      currentDate.getTime() - inputDate.getTime()
-    );
-
-    return timeDifference <= twoWeeksInMilliseconds;
-  };
-
   return (
     <>
       <section className="flex flex-col pt-6 space-y-4">
@@ -366,9 +350,6 @@ export default function Page() {
                     onClick={() => handleLevelChange(option.value)}
                     className="flex items-center justify-start p-2 space-x-2 cursor-pointer hover:bg-gray-100 rounded-md"
                   >
-                    {/* {selectedLevels.includes(option.value) && (
-                  <Check className="h-4 w-4 " />
-                )} */}
                     <input
                       type="checkbox"
                       checked={selectedLevels.includes(option.value)}
