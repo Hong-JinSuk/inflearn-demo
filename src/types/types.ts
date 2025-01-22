@@ -75,6 +75,7 @@ export type CardData = {
   level: '입문' | '초급' | '중급이상';
   classes: classesType[];
   upload: Date;
+  update: Date;
   reviewCount?: number;
   reviewScore?: number;
   students?: number;

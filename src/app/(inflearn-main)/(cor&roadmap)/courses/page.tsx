@@ -59,6 +59,7 @@ const cardDatas: CardData[] = [
     salePercent: 25,
     salePrice: 66000,
     upload: new Date('2023-01-01T12:30:00Z'),
+    update: new Date('2024-12-01T12:30:00Z'),
   },
   {
     image: null,
@@ -74,6 +75,7 @@ const cardDatas: CardData[] = [
     reviewScore: 4.9,
     students: 1900,
     upload: new Date('2025-01-20T12:30:00Z'),
+    update: new Date('2025-01-21T12:30:00Z'),
   },
   {
     image: null,
@@ -92,6 +94,7 @@ const cardDatas: CardData[] = [
     salePercent: 50,
     salePrice: 16500000,
     upload: new Date('2025-01-10T12:30:00Z'),
+    update: new Date('2024-01-20T12:30:00Z'),
   },
   {
     image: null,
@@ -108,7 +111,8 @@ const cardDatas: CardData[] = [
     saleDate: 59,
     salePercent: 50,
     salePrice: 36000,
-    upload: new Date('2025-01-09T00:00:00Z'),
+    upload: new Date('2025-01-01T00:00:00Z'),
+    update: new Date('2025-01-12T12:30:00Z'),
   },
   {
     image: null,
@@ -126,6 +130,7 @@ const cardDatas: CardData[] = [
     salePercent: 60,
     salePrice: 17000,
     upload: new Date('2024-12-15T00:00:00Z'),
+    update: new Date('2024-12-01T12:30:00Z'),
   },
   {
     image: null,
@@ -143,6 +148,7 @@ const cardDatas: CardData[] = [
     salePercent: 70,
     salePrice: 14000,
     upload: new Date('2025-01-15T00:00:00Z'),
+    update: new Date('2024-12-01T12:30:00Z'),
   },
   {
     image: null,
@@ -160,6 +166,7 @@ const cardDatas: CardData[] = [
     salePercent: 60,
     salePrice: 28000,
     upload: new Date('2025-01-05T00:00:00Z'),
+    update: new Date('2025-01-12T12:30:00Z'),
   },
   {
     image: null,
@@ -177,6 +184,7 @@ const cardDatas: CardData[] = [
     salePercent: 40,
     salePrice: 58000,
     upload: new Date('2024-12-13T00:00:00Z'),
+    update: new Date('2025-01-22T12:30:00Z'),
   },
   {
     image: null,
@@ -194,6 +202,7 @@ const cardDatas: CardData[] = [
     salePercent: 70,
     salePrice: 27000,
     upload: new Date('2024-12-15T00:00:00Z'),
+    update: new Date('2024-12-01T12:30:00Z'),
   },
   {
     image: null,
@@ -211,6 +220,7 @@ const cardDatas: CardData[] = [
     salePercent: 20,
     salePrice: 96000,
     upload: new Date('2025-01-21T00:00:00Z'),
+    update: new Date('2024-12-01T12:30:00Z'),
   },
   {
     image: null,
@@ -228,6 +238,7 @@ const cardDatas: CardData[] = [
     salePercent: 30,
     salePrice: 42000,
     upload: new Date('2024-12-15T00:00:00Z'),
+    update: new Date('2024-12-01T12:30:00Z'),
   },
   {
     image: null,
@@ -245,6 +256,7 @@ const cardDatas: CardData[] = [
     salePercent: 50,
     salePrice: 45000,
     upload: new Date('2024-12-15T00:00:00Z'),
+    update: new Date('2024-12-01T12:30:00Z'),
   },
 ];
 
@@ -306,7 +318,19 @@ export default function Page() {
     );
   };
 
-  const isUpload = (dateString: Date): boolean => {
+  const isUploadOrUpdate = (dateString: Date): boolean => {
+    const inputDate = new Date(dateString);
+    const currentDate = new Date();
+
+    const twoWeeksInMilliseconds = 14 * 24 * 60 * 60 * 1000;
+    const timeDifference = Math.abs(
+      currentDate.getTime() - inputDate.getTime()
+    );
+
+    return timeDifference <= twoWeeksInMilliseconds;
+  };
+
+  const isUpdate = (dateString: Date): boolean => {
     const inputDate = new Date(dateString);
     const currentDate = new Date();
 
@@ -494,7 +518,11 @@ export default function Page() {
                       </div>
                     </div>
                   )}
-                  {isUpload(item.upload) ? (
+                  {isUploadOrUpdate(item.upload) ? (
+                    <span className="bg-blue-600 rounded-sm px-[5px] py-[3px] text-xs font-extrabold text-white">
+                      new
+                    </span>
+                  ) : isUploadOrUpdate(item.update) ? (
                     <span className="bg-green-600 rounded-sm px-[5px] py-[3px] text-xs font-extrabold text-white">
                       update
                     </span>
