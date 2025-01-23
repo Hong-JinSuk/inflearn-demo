@@ -1,6 +1,6 @@
 'use client';
 
-import { headerProps, HeaderSection } from '@/types/types';
+import { HeaderSection, TopBarProps } from '@/types/types';
 import { Car, Leaf } from 'lucide-react';
 import React from 'react';
 import { Separator } from '../ui/separator';
@@ -29,7 +29,7 @@ const topHeaderSection: HeaderSection[][] = [
   ],
 ];
 
-export default function TopBar({ state = 'education' }: headerProps) {
+export default function TopBar({ state = 'education' }: TopBarProps) {
   return (
     <div className="flex items-center justify-center w-full h-full z-30">
       <div className="w-full h-full flex items-center justify-between max-w-[1440px] min-w-[500px] mx-auto px-8 bg-white">

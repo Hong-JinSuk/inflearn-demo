@@ -17,7 +17,6 @@ export default function useScrollareaDirection({
 
   useEffect(() => {
     // 내부 스크롤 컨테이너 참조
-    console.log(scrollAreaRef.type);
     const scrollContainer = scrollAreaRef.current.querySelector(
       '[data-radix-scroll-area-viewport]'
     ) as HTMLElement | null;
