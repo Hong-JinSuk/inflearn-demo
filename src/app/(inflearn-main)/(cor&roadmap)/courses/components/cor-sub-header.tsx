@@ -204,11 +204,17 @@ export default function CorSubHeader({
                 onMouseLeave={() => setHoverHeaderState(null)}
               >
                 <item.icon
-                  strokeWidth={`${subHeaderState === item.label && 2.2}`}
+                  strokeWidth={`${
+                    (subHeaderState === item.label ||
+                      hoverHeaderState === item.label) &&
+                    2.2
+                  }`}
                 />
                 <span
                   className={`${
-                    subHeaderState === item.label && 'text-green-600'
+                    (subHeaderState === item.label ||
+                      hoverHeaderState === item.label) &&
+                    'text-green-600'
                   } text-xs font-medium whitespace-nowrap`}
                 >
                   {item.value}
@@ -229,18 +235,25 @@ export default function CorSubHeader({
           />
         )}
       </div>
-      {subHeaderState
-        ? (() => {
-            const selectedMenu = subHeaderMenus.find(
-              (menu) => menu.label === subHeaderState
-            );
-
-            if (!selectedMenu) return null; // subHeaderState와 일치하는 메뉴가 없으면 아무것도 렌더링하지 않음
-
-            return selectedMenu.children ? (
-              <div className="w-full h-[54px] bg-slate-200">
-                <div className="flex items-center justify-start max-w-[1440px] min-w-[500px] mx-auto px-8 w-full h-full space-x-3">
-                  {selectedMenu.children.map((child, index) => (
+      {(hoverHeaderState || subHeaderState !== '_all') && (
+        <div className="w-full h-[54px] bg-slate-200">
+          <div className="flex items-center justify-start max-w-[1440px] min-w-[500px] mx-auto px-8 w-full h-full space-x-3">
+            {hoverHeaderState !== '_all' && hoverHeaderState !== null
+              ? subHeaderMenus
+                  .find((menu) => menu.label === hoverHeaderState)
+                  ?.children?.map((child, index) => (
+                    <Button
+                      key={index}
+                      className="rounded-full"
+                      variant={'outline'}
+                      size={'sm'}
+                    >
+                      {child.value}
+                    </Button>
+                  ))
+              : subHeaderMenus
+                  .find((menu) => menu.label === subHeaderState)
+                  ?.children?.map((child, index) => (
                     <Button
                       key={index}
                       className="rounded-full"
@@ -250,13 +263,38 @@ export default function CorSubHeader({
                       {child.value}
                     </Button>
                   ))}
-                </div>
-              </div>
-            ) : (
-              ''
-            );
-          })()
-        : ''}
+          </div>
+        </div>
+      )}
     </>
   );
 }
+
+// {subHeaderState
+//   ? (() => {
+//       const selectedMenu = subHeaderMenus.find(
+//         (menu) => menu.label === subHeaderState
+//       );
+
+//       if (!selectedMenu) return null;
+
+//       return selectedMenu.children ? (
+//         <div className="w-full h-[54px] bg-slate-200">
+//           <div className="flex items-center justify-start max-w-[1440px] min-w-[500px] mx-auto px-8 w-full h-full space-x-3">
+//             {selectedMenu.children.map((child, index) => (
+//               <Button
+//                 key={index}
+//                 className="rounded-full"
+//                 variant={'outline'}
+//                 size={'sm'}
+//               >
+//                 {child.value}
+//               </Button>
+//             ))}
+//           </div>
+//         </div>
+//       ) : (
+//         ''
+//       );
+//     })()
+//   : ''}

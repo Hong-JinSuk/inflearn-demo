@@ -45,7 +45,7 @@ export default function Layout({ children }: Props) {
                         : 'translate-y-0'
                     }`
                   : ''
-              } ${subHeaderState === '_all' ? '' : 'mb-[54px]'}`}
+              } ${subHeaderState !== '_all' && 'mb-[54px]'}`}
         >
           <Header onStateClick={onHeaderStateClick} />
           {headerState === 'courses' && (
