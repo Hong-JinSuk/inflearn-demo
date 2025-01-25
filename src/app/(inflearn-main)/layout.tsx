@@ -5,8 +5,8 @@ import Header from '@/components/common/header';
 import TopBar from '@/components/common/top-bar';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import useScrollareaDirection from '@/hooks/use-scrollarea-direction';
-import { HeaderStates, TopBarStates } from '@/types/types';
-import { useEffect, useRef, useState } from 'react';
+import { HeaderStates, SubHeaderStates, TopBarStates } from '@/types/types';
+import { useRef, useState } from 'react';
 import CorSubHeader from './(cor&roadmap)/courses/components/cor-sub-header';
 
 type Props = {
@@ -16,6 +16,9 @@ type Props = {
 export default function Layout({ children }: Props) {
   const [topBarState, setTopBarState] = useState<TopBarStates>('education');
   const [headerState, setHeaderState] = useState<HeaderStates>('courses');
+  const [subHeaderState, setSubHeaderState] = useState<SubHeaderStates>('_all');
+  const [hoverHeaderState, setHoverHeaderState] =
+    useState<SubHeaderStates | null>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const { scrollDirection, lastScrollTop } = useScrollareaDirection({
     scrollAreaRef,
@@ -25,10 +28,6 @@ export default function Layout({ children }: Props) {
   const onHeaderStateClick = (label: HeaderStates) => {
     setHeaderState(label);
   };
-
-  useEffect(() => {
-    console.log(headerState);
-  }, [headerState]);
 
   return (
     <ScrollArea className="flex flex-col w-full h-full" ref={scrollAreaRef}>
@@ -46,12 +45,17 @@ export default function Layout({ children }: Props) {
                         : 'translate-y-0'
                     }`
                   : ''
-              }`}
+              } ${subHeaderState !== '_all' && 'mb-[54px]'}`}
         >
           <Header onStateClick={onHeaderStateClick} />
-          <div className="border-b">
-            {headerState === 'courses' && <CorSubHeader />}
-          </div>
+          {headerState === 'courses' && (
+            <CorSubHeader
+              setHeaderState={setSubHeaderState}
+              subHeaderState={subHeaderState}
+              setHoverHeaderState={setHoverHeaderState}
+              hoverHeaderState={hoverHeaderState}
+            />
+          )}
         </div>
         <main
           className={`${
