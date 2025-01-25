@@ -152,14 +152,6 @@ export default function CorSubHeader({
     setHeaderState(state);
   };
 
-  useEffect(() => {
-    console.log(hoverHeaderState);
-  }, [hoverHeaderState]);
-
-  useEffect(() => {
-    console.log(chevronDir);
-  }, [chevronDir]);
-
   return (
     <>
       <div className="flex items-center h-20 w-full max-w-[1440px] min-w-[500px] mx-auto px-4 relative bg-white">

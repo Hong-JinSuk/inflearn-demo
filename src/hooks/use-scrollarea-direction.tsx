@@ -22,7 +22,6 @@ export default function useScrollareaDirection({
     ) as HTMLElement | null;
 
     if (!scrollContainer) {
-      console.warn('Scroll container not found');
       return;
     }
 
