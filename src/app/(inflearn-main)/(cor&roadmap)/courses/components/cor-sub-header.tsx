@@ -122,9 +122,10 @@ export default function CorSubHeader({
         const maxScroll =
           scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
 
+        const tolerance = 1; // mac과 window에서의 허용오차
         if (currentScroll <= 0) {
           setChevronDir('right');
-        } else if (currentScroll >= maxScroll) {
+        } else if (Math.abs(currentScroll - maxScroll) <= tolerance) {
           setChevronDir('left');
         }
       }
@@ -154,6 +155,10 @@ export default function CorSubHeader({
   useEffect(() => {
     console.log(hoverHeaderState);
   }, [hoverHeaderState]);
+
+  useEffect(() => {
+    console.log(chevronDir);
+  }, [chevronDir]);
 
   return (
     <>
